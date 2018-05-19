@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405022520) do
+ActiveRecord::Schema.define(version: 20180519072628) do
 
   create_table "captured_images", force: :cascade do |t|
     t.string  "content",      limit: 255
@@ -28,9 +28,24 @@ ActiveRecord::Schema.define(version: 20160405022520) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "tag_id",     limit: 4
   end
 
+  add_index "prototypes", ["tag_id"], name: "index_prototypes_on_tag_id", using: :btree
   add_index "prototypes", ["user_id"], name: "index_prototypes_on_user_id", using: :btree
+
+  create_table "prototypes_tags", force: :cascade do |t|
+    t.integer  "prototype_id", limit: 4, null: false
+    t.integer  "tag_id",       limit: 4, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "text",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -56,5 +71,6 @@ ActiveRecord::Schema.define(version: 20160405022520) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "captured_images", "prototypes"
+  add_foreign_key "prototypes", "tags"
   add_foreign_key "prototypes", "users"
 end
