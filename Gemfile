@@ -17,6 +17,8 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
+gem 'faker'
+
 
 group :development, :test do
   gem 'byebug'
