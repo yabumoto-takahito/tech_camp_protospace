@@ -1,3 +1,3 @@
 class Tag < ActiveRecord::Base
-  has_many: prototypes, through: protoype_tags
+  has_many: prototypes, through: :prototype_tags
 end
