@@ -8,7 +8,7 @@ class PrototypesController < ApplicationController
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
-
+    @prototype.tags.build
   end
 
   def create
@@ -36,7 +36,7 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status],
-      tags: [:content]
+      tags_attributes: [:content]
     )
   end
 end
