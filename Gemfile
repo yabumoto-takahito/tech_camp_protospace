@@ -15,6 +15,7 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'rmagick'
 
 group :development, :test do
