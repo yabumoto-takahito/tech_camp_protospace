@@ -41,3 +41,8 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+.generators
+protospace_in_dev-master.iml
+test.txt
+.rakeTasks
