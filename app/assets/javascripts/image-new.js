@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('#prototype_captured_images_attributes_0_content').on('change', function(e) {
       var file = e.target.files[0];
       // e.target.files[0]で選択されたファイル情報を取得
