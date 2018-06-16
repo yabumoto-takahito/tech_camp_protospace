@@ -15,13 +15,25 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'rmagick'
 
 group :development, :test do
   gem 'byebug'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'aws-sdk'
+end
+
+group :production do
+  gem 'unicorn'
 end
