@@ -1,0 +1,38 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+
+.filter-nav
+  .container
+    .row
+      %ul.nav.nav-pills.col-lg-11
+        %li.btn-default.btn-popular
+          = link_to "Popular", "#"
+        %li.btn-default.btn-popular
+          = link_to "Newest", "#"
+      = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
+
+.container.tag-list
+  .row.col-sm-12.tag-content
+    .thumbnail_tag-content
+      -#= link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype)
+      .tag-caption
+        %a.tag-link{href: tag_path(@tags.id)}
+          %h3
+            = @tags.content
+        .tag-meta
+          .tag-list
+            - project_count = @tags.prototype_tags.count
+            - if project_count <= 1
+              %a.project-link{href: tag_path(@tags.id)}
+                = "#{project_count} project"
+            - else
+              %a.project-link{href: tag_path(@tags.id)}
+                = "#{project_count} projects"
+            -#= link_to tag.prototype, prototype_path(tag.prototype_id)
+
+    -#= render partial: 'tags/tag', :locals => {tag: @tags}
+
+.container.prototype-list
+  .row
+    = render partial: 'prototypes/prototype', collection: @prototypes
