@@ -17,6 +17,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'rmagick'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'
