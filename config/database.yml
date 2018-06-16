@@ -34,6 +34,6 @@ test:
 production:
   <<: *default
   database: protospace-in-dev_production
-  username: keimaru01
+  username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: ec2-52-196-37-35.ap-northeast-1.compute.amazonaws.com
+  socket: /var/lib/mysql/mysql.sock
