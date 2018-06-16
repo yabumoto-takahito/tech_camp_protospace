@@ -5,12 +5,12 @@
 .filter-nav
   .container
     .row
-      %ul.nav.nav-pills.col-lg-11
+      %ul.nav.nav-pills.col-lg-10
         %li.btn-default.btn-popular
-          = link_to "Popular", "#"
+          = link_to "Popular PROTO", "#", class: "btn-index btn-success"
         %li.btn-default.btn-popular
-          = link_to "Newest", "#"
-      = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
+          = link_to "Newest PROTO", "#", class: "btn-index btn-info"
+      = link_to "VIEW TAGS", tags_path, class: "btn btn-default btn-taglist col-lg-2"
 
 .container.proto-list
   .row
