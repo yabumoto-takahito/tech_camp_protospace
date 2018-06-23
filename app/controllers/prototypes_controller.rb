@@ -2,12 +2,13 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.order('created_at DESC').page(params[:page]).per(8)
   end
 
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
+    @prototype.tags.build
   end
 
   def create
@@ -15,8 +16,8 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to ({ action: :new }), alert: 'New prototype was unsuccessfully created'
-     end
+      redirect_to new_prototype_path, alert: 'New prototype was unsuccessfully created'
+    end
   end
 
   def show
@@ -47,6 +48,7 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status, :id]
+      tags_attributes: [:content]
     )
   end
 end
